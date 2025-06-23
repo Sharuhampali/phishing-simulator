@@ -1,0 +1,17 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model UserInteraction {
+  id           Int      @id @default(autoincrement())
+  email        String
+  password     String?   // Add this line
+  token        String
+  clickedLink  Boolean  @default(false)
+  submittedAt  DateTime @default(now())
+}
