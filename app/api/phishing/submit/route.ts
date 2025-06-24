@@ -1,3 +1,4 @@
+//File: app/api/phishing/submit/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
@@ -12,8 +13,7 @@ export async function POST(req: Request) {
     // Store the credentials in the database
     await prisma.userInteraction.create({
       data: {
-        email,
-        password,       // ← You must have added this field in schema.prisma
+        email,       // ← You must have added this field in schema.prisma
         token,
         clickedLink: true,
       },
