@@ -84,7 +84,6 @@ import { useState, useCallback, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
 import { toast } from "sonner"
 import { Cpu, Play, Square, RotateCcw, Zap, Shield, Hash, ArrowLeft } from "lucide-react"
@@ -276,9 +275,7 @@ export default function AdvancedBruteForceSimulator() {
     }
   }
 
-  const progress = found
-    ? 100
-    : (stats.attempts / calculateTotalCombinations(target.length, CHARSET.length)) * 100
+
 
 
 
