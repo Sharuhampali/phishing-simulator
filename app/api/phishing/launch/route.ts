@@ -104,21 +104,23 @@ export async function POST(req: Request) {
       to: email,
       subject: "🔒 URGENT: Security Alert - Action Required",
       html: `
-        <div style="font-family: 'Google Sans', Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
+        <div style="font-family: 'Roboto', 'Arial', sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
           <!-- Google Header -->
-          <div style="padding: 20px; border-bottom: 1px solid #dadce0;">
+          <div style="padding: 20px 24px; border-bottom: 1px solid #dadce0;">
             <div style="display: flex; align-items: center; gap: 8px;">
-              <div style="width: 32px; height: 32px; background: #4285f4; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                <span style="color: white; font-weight: bold; font-size: 18px;">G</span>
-              </div>
-              <span style="color: #5f6368; font-size: 22px; font-weight: 400;">Google</span>
+              <span style="color: #4285F4; font-weight: 500; font-size: 24px;">G</span>
+              <span style="color: #EA4335; font-weight: 500; font-size: 24px;">o</span>
+              <span style="color: #FBBC05; font-weight: 500; font-size: 24px;">o</span>
+              <span style="color: #4285F4; font-weight: 500; font-size: 24px;">g</span>
+              <span style="color: #34A853; font-weight: 500; font-size: 24px;">l</span>
+              <span style="color: #EA4335; font-weight: 500; font-size: 24px;">e</span>
             </div>
           </div>
-          
+
           <!-- Security Alert -->
           <div style="padding: 32px 24px; background-color: #fef7e0; border-left: 4px solid #f9ab00;">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-              <div style="width: 24px; height: 24px; background: #f9ab00; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <div style="width: 24px; height: 24px; background: #fef7e0; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                 <span style="color: white; font-size: 14px;">⚠</span>
               </div>
               <h2 style="color: #ea4335; margin: 0; font-size: 18px; font-weight: 500;">Critical Security Alert</h2>
@@ -127,7 +129,7 @@ export async function POST(req: Request) {
               We detected unusual sign-in activity on your Google Account from an unrecognized device in <strong>Moscow, Russia</strong>.
             </p>
           </div>
-          
+
           <!-- Main Content -->
           <div style="padding: 32px 24px;">
             <p style="color: #3c4043; line-height: 1.5; margin: 0 0 16px 0;">
@@ -146,7 +148,7 @@ export async function POST(req: Request) {
             <p style="color: #3c4043; line-height: 1.5; margin: 0 0 32px 0;">
               If this was you, you can ignore this email. If not, we recommend you secure your account immediately.
             </p>
-            
+
             <!-- CTA Button -->
             <div style="text-align: center; margin: 32px 0;">
               <a href="${phishingLink}" 
@@ -161,13 +163,13 @@ export async function POST(req: Request) {
                 Secure your account
               </a>
             </div>
-            
+
             <p style="color: #5f6368; font-size: 12px; line-height: 1.4; margin: 24px 0 0 0;">
               You can also secure your account by going to 
               <a href="${phishingLink}" style="color: #1a73e8;">https://myaccount.google.com/security</a>
             </p>
           </div>
-          
+
           <!-- Footer -->
           <div style="background-color: #f8f9fa; padding: 24px; border-top: 1px solid #dadce0;">
             <p style="color: #5f6368; font-size: 12px; margin: 0; text-align: center;">
@@ -180,6 +182,7 @@ export async function POST(req: Request) {
         </div>
       `,
     })
+
     const response: LaunchResponse = {
       message: "Campaign launched successfully",
       phishingLink,
@@ -197,6 +200,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: errorMessage }, { status: 500 })
   }
 }
+
 // import { NextResponse } from "next/server"
 // import { v4 as uuidv4 } from "uuid"
 // import nodemailer from "nodemailer"
