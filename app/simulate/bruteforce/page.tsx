@@ -438,30 +438,42 @@ export default function AdvancedBruteForceSimulator() {
               {"> ATTACK_PROGRESS"}
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span className="text-green-300/70 font-mono">{"current_attempt:"}</span>
-                <span className="text-green-400 font-mono bg-green-500/10 px-2 py-1 rounded border border-green-500/20">
-                  {attempt || "--"}
-                </span>
-              </div>
-              <Progress value={progress} className="h-3 bg-green-500/20" />
-              <div className="flex justify-between text-xs text-green-300/70 font-mono">
-                <span>{progress.toFixed(4)}%</span>
-                <span>{calculateTotalCombinations(target.length, CHARSET.length).toLocaleString()} total</span>
-              </div>
-            </div>
+         <CardContent className="space-y-4">
+  {/* <div className="space-y-2">
+    <div className="flex justify-between text-sm">
+      <span className="text-green-300/70 font-mono">{"current_attempt:"}</span>
+      <span className="text-green-400 font-mono bg-green-500/10 px-2 py-1 rounded border border-green-500/20 transition-all duration-300">
+        {attempt || "--"}
+      </span>
+    </div>
+  </div> */}
+  {/* Cracked Letters */}
+<Card className="bg-black border-green-500/30 hover:shadow-lg hover:shadow-green-500/20 transition-all">
+  <CardHeader>
+    <CardTitle className="flex items-center gap-2 text-green-400 font-mono">
+      {"> CRACKED_LETTERS"}
+    </CardTitle>
+  </CardHeader>
+  <CardContent className="flex justify-center items-center py-6">
+    <div className="text-green-400 font-mono text-4xl tracking-widest">
+      {attempt || "_ _ _ _"}
+    </div>
+  </CardContent>
+</Card>
 
-            {isRunning && (
-              <div className="text-center">
-                <div className="inline-flex items-center gap-2 text-sm text-green-400 font-mono">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                  {"attack_in_progress..."}
-                </div>
-              </div>
-            )}
-          </CardContent>
+
+  <div className="text-center">
+    {isRunning ? (
+      <div className="inline-flex items-center gap-2 text-sm text-green-400 font-mono animate-pulse">
+        <div className="w-2 h-2 bg-green-400 rounded-full" />
+        {"attack_in_progress..."}
+      </div>
+    ) : (
+      <div className="text-green-700/50 font-mono text-sm italic">idle — awaiting command</div>
+    )}
+  </div>
+</CardContent>
+
         </Card>
       </div>
     </div>
