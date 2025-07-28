@@ -211,7 +211,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Terminal, Mail, Code, Cpu, TrendingUp, Users, Activity, Zap } from "lucide-react"
+import { Terminal, Mail, Cpu, TrendingUp, Users, Activity, Zap, ShieldCheck } from "lucide-react"
 import Link from "next/link"
 
 export default function DashboardPage() {
@@ -286,13 +286,15 @@ export default function DashboardPage() {
               <Mail className="h-4 w-4" />
               {"PHISHING_SIM"}
             </TabsTrigger>
-            <TabsTrigger value="xss" className="flex items-center gap-2 opacity-50 font-mono">
-              <Code className="h-4 w-4" />
-              {"XSS_EXPLOIT"}
-              <Badge variant="outline" className="ml-2 text-xs border-yellow-500/30 text-yellow-400">
-                {"DEV"}
-              </Badge>
+
+            <TabsTrigger
+              value="secure"
+              className="flex items-center gap-2 data-[state=active]:bg-yellow-500/20 data-[state=active]:text-yellow-400 font-mono"
+            >
+              <ShieldCheck className="h-4 w-4" />
+              {"HOW_TO_SECURE_YOURSELF"}
             </TabsTrigger>
+
             <TabsTrigger
               value="bruteforce"
               className="flex items-center gap-2 data-[state=active]:bg-purple-500/20 data-[state=active]:text-purple-400 font-mono"
@@ -302,7 +304,9 @@ export default function DashboardPage() {
             </TabsTrigger>
           </TabsList>
 
+          {/* PHISHING */}
           <TabsContent value="phishing">
+            {/* unchanged phishing cards */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card className="bg-black border-red-500/30 hover:shadow-lg hover:shadow-red-500/20 transition-all">
                 <CardHeader className="pb-4">
@@ -376,18 +380,50 @@ export default function DashboardPage() {
             </div>
           </TabsContent>
 
-          <TabsContent value="xss">
-            <Card className="bg-black border-yellow-500/30">
-              <CardContent className="p-8 text-center">
-                <Code className="h-16 w-16 text-yellow-400 mx-auto mb-4 animate-pulse" />
-                <h3 className="text-xl font-semibold mb-2 text-green-400 font-mono">{"> XSS_MODULE_INITIALIZING"}</h3>
-                <p className="text-green-300/70 font-mono">{"cross_site_scripting_simulation_tools_in_development"}</p>
-                <div className="mt-4 text-yellow-400 font-mono text-sm">{"[STATUS: DEVELOPMENT_MODE]"}</div>
+          {/* HOW TO SECURE YOURSELF */}
+          <TabsContent value="secure">
+            <Card className="bg-black border-yellow-500/30 hover:shadow-lg hover:shadow-yellow-500/20 transition-all">
+              <CardHeader className="pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-yellow-500/20 rounded-lg border border-yellow-500/30">
+                    <ShieldCheck className="h-6 w-6 text-yellow-400" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl text-green-400 font-mono">{"> SECURITY_GUIDELINES"}</CardTitle>
+                    <CardDescription className="mt-1 text-green-300/70 font-mono text-sm">
+                      {"essential_tips_to_secure_your_digital_presence()"}
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="p-4 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
+                  <h4 className="font-semibold mb-2 text-yellow-400 font-mono">{"best_practices:"}</h4>
+                  <ul className="text-sm text-yellow-300/80 space-y-1 font-mono">
+                    <li>{"• use_strong_and_unique_passwords"}</li>
+                    <li>{"• enable_two_factor_authentication"}</li>
+                    <li>{"• avoid_clicking_suspicious_links"}</li>
+                    <li>{"• update_software_regularly"}</li>
+                    <li>{"• backup_important_data_securely"}</li>
+                  </ul>
+                </div>
+                <Button
+                  asChild
+                  className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-mono font-bold"
+                >
+                  <Link href="/simulate/howtosecure">
+
+                    <ShieldCheck className="mr-2 h-4 w-4" />
+                    {"> READ_FULL_GUIDE"}
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
           </TabsContent>
 
+          {/* BRUTEFORCE */}
           <TabsContent value="bruteforce">
+            {/* unchanged bruteforce content */}
             <Card className="bg-black border-purple-500/30 hover:shadow-lg hover:shadow-purple-500/20 transition-all">
               <CardHeader className="pb-4">
                 <div className="flex items-center gap-3">
