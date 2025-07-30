@@ -209,7 +209,6 @@
 // }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Terminal, Mail, Cpu, TrendingUp, Users, Activity, Zap, ShieldCheck } from "lucide-react"
 import Link from "next/link"
@@ -278,10 +277,10 @@ export default function DashboardPage() {
 
         {/* Main Content */}
         <Tabs defaultValue="phishing" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8 bg-black border border-green-500/30">
+          <TabsList className="grid w-full grid-cols-3 mb-8 bg-black text-white border border-green-500/30">
             <TabsTrigger
               value="phishing"
-              className="flex items-center gap-2 data-[state=active]:bg-green-500/20 data-[state=active]:text-green-400 font-mono"
+              className="flex items-center gap-2 text-white data-[state=active]:bg-green-500/20 data-[state=active]:text-green-400 font-mono"
             >
               <Mail className="h-4 w-4" />
               {"PHISHING_SIM"}
@@ -289,7 +288,7 @@ export default function DashboardPage() {
 
             <TabsTrigger
               value="secure"
-              className="flex items-center gap-2 data-[state=active]:bg-yellow-500/20 data-[state=active]:text-yellow-400 font-mono"
+              className="flex items-center gap-2 text-white data-[state=active]:bg-yellow-500/20 data-[state=active]:text-yellow-400 font-mono"
             >
               <ShieldCheck className="h-4 w-4" />
               {"HOW_TO_SECURE_YOURSELF"}
@@ -297,7 +296,7 @@ export default function DashboardPage() {
 
             <TabsTrigger
               value="bruteforce"
-              className="flex items-center gap-2 data-[state=active]:bg-purple-500/20 data-[state=active]:text-purple-400 font-mono"
+              className="flex items-center gap-2 text-white data-[state=active]:bg-purple-500/20 data-[state=active]:text-purple-400 font-mono"
             >
               <Cpu className="h-4 w-4" />
               {"BRUTEFORCE"}
