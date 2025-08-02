@@ -305,6 +305,7 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { toast } from "sonner"
 import { Mail, Send, BarChart3, ArrowLeft, Copy, ExternalLink, Zap } from "lucide-react"
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
 interface LaunchResponse {
   message: string
@@ -325,7 +326,7 @@ export default function PhishingCampaignPage() {
 
     setIsLoading(true)
     try {
-      const res = await fetch("/api/phishing/launch", {
+      const res = await fetch(`${baseUrl}/api/phishing/launch`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
